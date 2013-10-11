@@ -10,7 +10,9 @@ class DelayedJobWeb < Sinatra::Base
   set :public_folder,  File.expand_path('../public', __FILE__)
   set :views,  File.expand_path('../views', __FILE__)
   set :haml, { :format => :html5 }
-
+  before do
+    raise current_user.inspect
+  end
   def current_page
     url_path request.path_info.sub('/','')
   end
